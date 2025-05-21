@@ -1,0 +1,27 @@
+part of 'upload_logo_bloc.dart';
+
+@immutable
+sealed class UploadLogoState {}
+
+final class UploadLogoInitial extends UploadLogoState {}
+
+class LoadingState extends UploadLogoState {}
+
+class FetchImageState extends UploadLogoState {
+  final List<File> files;
+  final bool isLastPage;
+
+  FetchImageState({required this.files, required this.isLastPage});
+}
+
+class ErrorState extends UploadLogoState {
+  final String error;
+
+  ErrorState({required this.error});
+}
+
+class SelectImageState extends UploadLogoState {
+  final File image;
+
+  SelectImageState({required this.image});
+}
